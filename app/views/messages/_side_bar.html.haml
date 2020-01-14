@@ -1,0 +1,18 @@
+.side_bar
+  .side_bar__top
+    .side_bar__top__contents
+      %p.side_bar__top__contents__user_name masa
+      .side_bar__top__contents__function
+        = link_to "#",class: "side_bar__top__contents__function--btn" do
+          = icon('fa','cog')
+        = link_to "#",class: "side_bar__top__contents__function--btn" do
+          = icon('fa','edit')
+  .side_bar__bottom
+    .side_bar__bottom__group
+      = link_to "#",class: "side_bar__bottom__group--link" do
+        %p.side_bar__bottom__group--link--name tech
+        %p.side_bar__bottom__group--link--post post
+    .side_bar__bottom__group
+      = link_to "#",class: "side_bar__bottom__group--link" do
+        %p.side_bar__bottom__group--link--name tech
+        %p.side_bar__bottom__group--link--post post
