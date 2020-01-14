@@ -1,0 +1,31 @@
+.main_chat
+  .main_chat__top
+    .main_chat__top__left
+      %p.main_chat__top__left--group_name koiwa
+      %p.main_chat__top__left--member_name Member: shun yamamoto tanaka
+    .main_chat__top__right
+      = link_to "#",class: "main_chat__top__right--btn" do
+        Edit
+
+  .main_chat__center
+    .main_chat__center__chats
+      .main_chat__center__chats__chat
+        .main_chat__center__chats__chat__status
+          %p.main_chat__center__chats__chat__status--name shun
+          %p.main_chat__center__chats__chat__status--date 2020-01-01
+        %p.main_chat__center__chats__chat--text おはよう
+      .main_chat__center__chats__chat
+        .main_chat__center__chats__chat__status
+          %p.main_chat__center__chats__chat__status--name shun
+          %p.main_chat__center__chats__chat__status--date 2020-01-01
+        %p.main_chat__center__chats__chat--text おはよう
+
+
+  .main_chat__bottom
+    %form.main_chat__bottom__form
+      .main_chat__bottom__form__text_area
+        %input.main_chat__bottom__form__text_area--text{type: 'text',placeholder: 'type a message'}
+        %label.main_chat__bottom__form__text_area--image 
+          = icon('fas','image')
+          %input.main_chat__bottom__form__text_area--image--file{type: "file"}
+      %input.main_chat__bottom__form--submit{type: "submit",value: "Send"}
