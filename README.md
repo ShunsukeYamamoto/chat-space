@@ -39,10 +39,10 @@
 
 |Column|type|options|
 |------|----|-------|
-|body|text||
+|content|text||
 |image|text||
-|user_id|integr|null: false,foreign_key: true|
-|group_id|integer|null: false,foleign_key: true|
+|user_id|references|null: false,foreign_key: true|
+|group_id|references|null: false,foleign_key: true|
 
 ### Association
 - belongs_to :user

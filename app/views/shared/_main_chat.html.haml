@@ -1,31 +1,38 @@
 .main_chat
   .main_chat__top
     .main_chat__top__left
-      %p.main_chat__top__left--group_name koiwa
-      %p.main_chat__top__left--member_name Member: shun yamamoto tanaka
+      .main_chat__top__left--group_name 
+        = @group.name
+      .main_chat__top__left--member_name
+        Member:
+        -@group.users.each do|member|
+          = member.name
+      
     .main_chat__top__right
-      = link_to edit_group_path(1),class: "main_chat__top__right--btn" do
+      = link_to edit_group_path(@group),class: "main_chat__top__right--btn" do
         Edit
 
   .main_chat__center
     .main_chat__center__chats
-      .main_chat__center__chats__chat
-        .main_chat__center__chats__chat__status
-          %p.main_chat__center__chats__chat__status--name shun
-          %p.main_chat__center__chats__chat__status--date 2020-01-01
-        %p.main_chat__center__chats__chat--text おはよう
-      .main_chat__center__chats__chat
-        .main_chat__center__chats__chat__status
-          %p.main_chat__center__chats__chat__status--name shun
-          %p.main_chat__center__chats__chat__status--date 2020-01-01
-        %p.main_chat__center__chats__chat--text おはよう
+      - @messages.each do|message|
+        .main_chat__center__chats__chat
+          .main_chat__center__chats__chat__status
+            %p.main_chat__center__chats__chat__status--name 
+              = message.user.name
+            %p.main_chat__center__chats__chat__status--date 
+              = message.created_at
+          %p.main_chat__center__chats__chat--text 
+            - if message.content.present?
+              = message.content
+          = image_tag message.image ,class: "main_chat__center__chats__chat--image"
+      
 
 
   .main_chat__bottom
-    %form.main_chat__bottom__form
+    = form_for [@group,@message], html: {class: "main_chat__bottom__form"} do |f|
       .main_chat__bottom__form__text_area
-        %input.main_chat__bottom__form__text_area--text{type: 'text',placeholder: 'type a message'}
-        %label.main_chat__bottom__form__text_area--image 
+        =f.text_field :content,placeholder: "type a message", class: "main_chat__bottom__form__text_area--text"
+        = f.label :image, class: "main_chat__bottom__form__text_area--image" do
           = icon('fas','image')
-          %input.main_chat__bottom__form__text_area--image--file{type: "file"}
-      %input.main_chat__bottom__form--submit{type: "submit",value: "Send"}
+          =f.file_field :image, class: "main_chat__bottom__form__text_area--image--file"
+      = f.submit "send", class: "main_chat__bottom__form--submit"
