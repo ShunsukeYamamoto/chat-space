@@ -61,6 +61,7 @@
 .main_chat{
   width: calc(100vw - 300px);
   height: 100vh;
+  
   &__top{
     background-color: #ffffff;
     height: 100px;
@@ -116,12 +117,18 @@
         &--text{
           color: #434A54;
           font-size: 14px;
+          margin-bottom: 10px;
+        }
+        &--image{
           margin-bottom: 46px;
         }
       }
     }
   }
+
+  
   &__bottom{
+    width: 100%;
     background-color: #d2d2d2;
     height: 90px;
     display: flex;
@@ -129,8 +136,6 @@
     &__form{
       width: 100%;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
       padding: 0 40px;
       &__text_area{
         width: 100%;
