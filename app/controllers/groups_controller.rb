@@ -27,7 +27,9 @@ class GroupsController < ApplicationController
   end
 
   def index
-    
+    @group = current_user.groups.first
+    @message = Message.new
+    @messages =@group.messages
   end
 
   private
