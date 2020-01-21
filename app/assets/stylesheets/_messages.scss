@@ -40,6 +40,7 @@
     background-color: #2f3e51;
     height: calc( 100% - 100px);
     font-weight: bold;
+    overflow: scroll;
     &__group{
       padding: 20px 20px 40px 20px;
       &--link{
@@ -97,10 +98,11 @@
   &__center{
     background-color: #fafafa;
     height: calc(100% - 100px - 90px );
+    overflow: scroll;
     &__chats{
       padding-top: 35px;
       &__chat{
-        margin-left: 40px;
+        margin: 0 0 46px 40px;
         &__status{
           display: flex;
           margin-bottom: 12px;
@@ -120,7 +122,6 @@
           margin-bottom: 10px;
         }
         &--image{
-          margin-bottom: 46px;
         }
       }
     }

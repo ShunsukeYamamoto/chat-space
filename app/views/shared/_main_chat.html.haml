@@ -20,11 +20,12 @@
             %p.main_chat__center__chats__chat__status--name 
               = message.user.name
             %p.main_chat__center__chats__chat__status--date 
-              = message.created_at
+              = message.created_at.strftime("%Y年%-m月%-d日 %-H時%M分")
           %p.main_chat__center__chats__chat--text 
             - if message.content.present?
               = message.content
-          = image_tag message.image ,class: "main_chat__center__chats__chat--image"
+          - if message.image.present?
+            = image_tag message.image ,class: "main_chat__center__chats__chat--image"
       
 
 
