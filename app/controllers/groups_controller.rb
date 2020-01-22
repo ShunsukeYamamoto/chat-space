@@ -29,7 +29,7 @@ class GroupsController < ApplicationController
   def index
     @group = current_user.groups.first
     @message = Message.new
-    @messages =@group.messages
+    @messages =@group.messages if @group
   end
 
   private
