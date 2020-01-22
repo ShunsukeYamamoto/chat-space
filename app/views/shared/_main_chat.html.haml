@@ -1,5 +1,5 @@
 .main_chat
-  .main_chat__top
+  .main_chat__top{data: {group: {id: params[:group_id]}}}
     -if @group
       .main_chat__top__left
         .main_chat__top__left--group_name 
@@ -17,7 +17,7 @@
     .main_chat__center__chats
       -if @group
         - @messages.each do|message|
-          .main_chat__center__chats__chat
+          .main_chat__center__chats__chat{data: {message: {id: message.id}}}
             .main_chat__center__chats__chat__status
               %p.main_chat__center__chats__chat__status--name 
                 = message.user.name
