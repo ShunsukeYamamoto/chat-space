@@ -1,8 +1,8 @@
 $(function(){
 
   var reloadMessages = function(){
-    last_message_id = $('.main_chat__center__chats__chat:last').data('message-id');
-
+    last_message_id = $('.main_chat__center__chats__chat:last').data("message-id");
+    
     $.ajax({
       url: "api/messages",
       type: 'GET',
@@ -28,7 +28,7 @@ $(function(){
 
   function buildHTML(message){
     if (message.image.url && message.content ){
-      var html = `<div class="main_chat__center__chats__chat">
+      var html = `<div class="main_chat__center__chats__chat" data-message-id="${message.id}">
                     <div class="main_chat__center__chats__chat__status">
                       <p class="main_chat__center__chats__chat__status--name">${message.user_name}</p>
                       <p class="main_chat__center__chats__chat__status--date">${message.created_at}</p>
@@ -38,7 +38,7 @@ $(function(){
                   </div>`
       return html;
     }else if (message.content){
-      var html = `<div class="main_chat__center__chats__chat">
+      var html = `<div class="main_chat__center__chats__chat" data-message-id="${message.id}">
                     <div class="main_chat__center__chats__chat__status">
                       <p class="main_chat__center__chats__chat__status--name">${message.user_name}</p>
                       <p class="main_chat__center__chats__chat__status--date">${message.created_at}</p>
@@ -47,7 +47,7 @@ $(function(){
                   </div>`
       return html;
     }else if(message.image.url){
-      var html = `<div class="main_chat__center__chats__chat">
+      var html = `<div class="main_chat__center__chats__chat" data-message-id="${message.id}">
                     <div class="main_chat__center__chats__chat__status">
                       <p class="main_chat__center__chats__chat__status--name">${message.user_name}</p>
                       <p class="main_chat__center__chats__chat__status--date">${message.created_at}</p>
