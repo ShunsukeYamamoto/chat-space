@@ -1,8 +1,7 @@
 $(function(){
 
   var reloadMessages = function(){
-    last_message_id = $('.main_chat__center__chats__chat:last').data('message-id');
-    
+    last_message_id = $('.main_chat__center__chats__chat:last').data("message-id");
     
     $.ajax({
       url: "api/messages",
@@ -29,7 +28,7 @@ $(function(){
 
   function buildHTML(message){
     if (message.image.url && message.content ){
-      var html = `<div class="main_chat__center__chats__chat">
+      var html = `<div class="main_chat__center__chats__chat" data-message-id="${message.id}">
                     <div class="main_chat__center__chats__chat__status">
                       <p class="main_chat__center__chats__chat__status--name">${message.user_name}</p>
                       <p class="main_chat__center__chats__chat__status--date">${message.created_at}</p>
@@ -39,7 +38,7 @@ $(function(){
                   </div>`
       return html;
     }else if (message.content){
-      var html = `<div class="main_chat__center__chats__chat">
+      var html = `<div class="main_chat__center__chats__chat" data-message-id="${message.id}">
                     <div class="main_chat__center__chats__chat__status">
                       <p class="main_chat__center__chats__chat__status--name">${message.user_name}</p>
                       <p class="main_chat__center__chats__chat__status--date">${message.created_at}</p>
@@ -48,7 +47,7 @@ $(function(){
                   </div>`
       return html;
     }else if(message.image.url){
-      var html = `<div class="main_chat__center__chats__chat">
+      var html = `<div class="main_chat__center__chats__chat" data-message-id="${message.id}">
                     <div class="main_chat__center__chats__chat__status">
                       <p class="main_chat__center__chats__chat__status--name">${message.user_name}</p>
                       <p class="main_chat__center__chats__chat__status--date">${message.created_at}</p>
@@ -80,7 +79,7 @@ $(function(){
       $('.main_chat__center__chats').append(html);
       $('.main_chat__center').animate({scrollTop: $('.main_chat__center')[0].scrollHeight});
       $('#new_message')[0].reset();
-      $('.main_chat__bottom__form--submit').removeAttr('disabled');     
+      $('.main_chat__bottom__form--submit').removeAttr('disabled');    
     })
     .fail(function(){
       alert('メッセージ送信に失敗しました');
@@ -88,7 +87,7 @@ $(function(){
 
 
   })
-  if (document.location.href.match(/\/groups\/\d\/messages/)){
+  if (document.location.href.match(/\/groups\/\d+\/messages/)){
     setInterval(reloadMessages,7000);
   }
   
