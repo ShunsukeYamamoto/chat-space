@@ -2,8 +2,7 @@ $(function(){
 
   var reloadMessages = function(){
     last_message_id = $('.main_chat__center__chats__chat:last').data('message-id');
-    
-    
+
     $.ajax({
       url: "api/messages",
       type: 'GET',
@@ -80,7 +79,7 @@ $(function(){
       $('.main_chat__center__chats').append(html);
       $('.main_chat__center').animate({scrollTop: $('.main_chat__center')[0].scrollHeight});
       $('#new_message')[0].reset();
-      $('.main_chat__bottom__form--submit').removeAttr('disabled');     
+      $('.main_chat__bottom__form--submit').removeAttr('disabled');    
     })
     .fail(function(){
       alert('メッセージ送信に失敗しました');
@@ -88,7 +87,7 @@ $(function(){
 
 
   })
-  if (document.location.href.match(/\/groups\/\d\/messages/)){
+  if (document.location.href.match(/\/groups\/\d+\/messages/)){
     setInterval(reloadMessages,7000);
   }
   
